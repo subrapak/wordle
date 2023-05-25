@@ -4,7 +4,7 @@ import {
   calculateCharacterColourForKeyboard,
   createCharacterArray,
 } from "@/utils";
-import { CORRECT_WORD } from "@/app/page";
+import { CORRECT_WORD } from "@/constants";
 
 interface KeyboardRowProps {
   characters: string;
