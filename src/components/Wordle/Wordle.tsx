@@ -81,10 +81,10 @@ export const Wordle: React.FC<WordleProps> = ({
         )}
         {isGameLost && (
           <div
-            className="rounded px-4 z-10 w-full max-w-5xl items-center justify-center font-mono text-center lg:flex mb-20 bg-red-500 cursor-pointer"
+            className="rounded px-4 py-2 z-10 w-full max-w-5xl items-center justify-center font-mono text-center lg:flex mb-20 bg-slate-800 cursor-pointer"
             onClick={failModal.open}
           >
-            Show Message
+            Share
           </div>
         )}
       </div>
