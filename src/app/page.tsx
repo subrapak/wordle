@@ -1,4 +1,3 @@
-"use client";
 import { Wordle } from "@/components/Wordle";
 
 export default function Home() {
