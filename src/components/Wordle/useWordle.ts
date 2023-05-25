@@ -65,17 +65,16 @@ export const useWordle = () => {
   const hideFailModal = () =>
     setFailModalConfig((config) => ({ ...config, isVisible: false }));
 
-  const hasGameFinished =
+  const isGameWon =
     gameConfig.guesses[gameConfig.currentAttemptIndex - 1] === CORRECT_WORD;
+  const isGameLost =
+    !isGameWon && gameConfig.currentAttemptIndex === gameConfig.guesses.length;
 
   const submitLatestAttempt = () => {
     setGameConfig((config) => {
       const isGuessCorrect =
         config.guesses[config.currentAttemptIndex] === CORRECT_WORD;
-      if (
-        isGuessCorrect &&
-        config.currentAttemptIndex + 1 === config.guesses.length
-      ) {
+      if (isGuessCorrect) {
         showSuccessModal();
       } else if (config.currentAttemptIndex + 1 === config.guesses.length) {
         showFailModal();
@@ -94,8 +93,8 @@ export const useWordle = () => {
     addCharToCurrentGuess,
     deleteLatestChar,
     submitLatestAttempt,
-    hasGameFinished,
-
+    isGameWon,
+    isGameLost,
     successModal: {
       config: successModalConfig,
       open: showSuccessModal,

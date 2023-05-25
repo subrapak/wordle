@@ -19,30 +19,19 @@ export const Wordle: React.FC<WordleProps> = ({
   addCharToCurrentGuess,
   deleteLatestChar,
   submitLatestAttempt,
-  hasGameFinished,
+  isGameWon,
+  isGameLost,
   successModal,
   failModal,
 }) => {
   return (
     <>
-      <div className="flex flex-row gap-4">
+      <div className="flex flex-col gap-4">
         <div
-          className="rounded px-4 z-10 w-full max-w-5xl items-center justify-center font-mono text-center lg:flex mb-20 bg-green-500 cursor-pointer"
-          onClick={successModal.open}
-        >
-          Test Win Msg
-        </div>
-        <div
-          className="rounded px-4 z-10 w-full max-w-5xl items-center justify-center font-mono text-center lg:flex mb-20 bg-red-500 cursor-pointer"
-          onClick={failModal.open}
-        >
-          Test Lose Msg
-        </div>
-        <div
-          className="rounded px-4 z-10 w-full max-w-5xl items-center justify-center font-mono text-center lg:flex mb-20 bg-cyan-500 cursor-pointer"
+          className="rounded px-4 z-10 w-full max-w-5xl items-center justify-center font-mono text-center lg:flex mb-20 cursor-pointer"
           onClick={resetGame}
         >
-          Reset Game
+          {`Arohan's Aruba Wordle`}
         </div>
       </div>
       <div>
@@ -65,19 +54,39 @@ export const Wordle: React.FC<WordleProps> = ({
         addCharToCurrentGuess={addCharToCurrentGuess}
         guesses={gameConfig.guesses}
         currentAttemptIndex={gameConfig.currentAttemptIndex}
-        isDisabled={hasGameFinished}
+        isDisabled={isGameWon || isGameLost}
       />
       <div className="flex flex-row mt-2">
         <CTAButton
           text="Delete"
           bgColor="bg-red-600"
           onClick={deleteLatestChar}
+          isDisabled={isGameLost || isGameWon}
         />
         <CTAButton
           text="Submit"
           bgColor="bg-green-600"
           onClick={submitLatestAttempt}
+          isDisabled={isGameLost || isGameWon}
         />
+      </div>
+      <div>
+        {isGameWon && (
+          <div
+            className="rounded px-4 py-2 z-10 w-full max-w-5xl items-center justify-center font-mono text-center lg:flex mb-20 bg-slate-800 cursor-pointer"
+            onClick={successModal.open}
+          >
+            Share
+          </div>
+        )}
+        {isGameLost && (
+          <div
+            className="rounded px-4 z-10 w-full max-w-5xl items-center justify-center font-mono text-center lg:flex mb-20 bg-red-500 cursor-pointer"
+            onClick={failModal.open}
+          >
+            Show Message
+          </div>
+        )}
       </div>
       <GameFinishModal
         {...failModal.config}

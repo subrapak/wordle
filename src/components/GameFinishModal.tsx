@@ -23,7 +23,7 @@ export const GameFinishModal: React.FC<GameFinishModalProps> = ({
       onClick={handleCloseModal}
     >
       <div
-        className="bg-white flex-col h-60 flex items-center justify-center rounded-lg p-10"
+        className="bg-white flex-col flex items-center justify-center rounded-lg p-10 py-5"
         onClick={handleForegroundClick}
       >
         <p className="text-black text-2xl text-center font-bold my-4">
@@ -31,6 +31,10 @@ export const GameFinishModal: React.FC<GameFinishModalProps> = ({
         </p>
         <p className="text-sky-800 text-m text-center font-semibold my-4">
           {message}
+        </p>
+        <p className="text-xs text-gray-600 text-center">
+          Now you can screenshot this and send it in the chat, well done have a
+          medal.
         </p>
       </div>
     </div>
