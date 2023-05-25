@@ -12,7 +12,7 @@ export const KeyboardKey: React.FC<KeyboardKeyProps> = ({
   return (
     <>
       <div
-        className={`flex w-10 h-12 m-1 rounded justify-center items-center cursor-pointer ${backgroundColor}`}
+        className={`flex w-8 h-12 m-1 rounded justify-center items-center cursor-pointer ${backgroundColor}`}
         onClick={onClickKey}
       >
         {char.toUpperCase()}

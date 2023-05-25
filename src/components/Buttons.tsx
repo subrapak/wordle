@@ -12,7 +12,7 @@ export const CTAButton: React.FC<CTAButtonProps> = ({
 }) => {
   return (
     <div
-      className={`flex justify-center items-center px-12 mx-4 h-10 rounded-md ${bgColor}`}
+      className={`flex justify-center items-center px-12 mx-4 h-10 rounded-md ${bgColor} cursor-pointer`}
       onClick={onClick}
     >
       {text}
