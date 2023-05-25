@@ -6,10 +6,23 @@ import {
   CORRECT_WORD,
 } from "@/constants";
 import { GameConfig } from "@/types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 export const useWordle = () => {
   const [gameConfig, setGameConfig] = useState<GameConfig>(DEFAULT_GAME_CONFIG);
+  const now = new Date();
+  const date = now.getDate();
+  const month = now.getMonth();
+  const year = now.getFullYear();
+  const fullDate = `${date}-${month}-${year}`;
+  useEffect(() => {
+    const gameCookie = Cookies.get(`ARUBA-${fullDate}`);
+    const cookieGameConfig = gameCookie && JSON.parse(gameCookie);
+    setGameConfig(cookieGameConfig);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const resetGame = () => setGameConfig(DEFAULT_GAME_CONFIG);
   const addCharToCurrentGuess = (char: string) => {
     setGameConfig((config) => {
@@ -67,7 +80,12 @@ export const useWordle = () => {
       } else if (config.currentAttemptIndex + 1 === config.guesses.length) {
         showFailModal();
       }
-      return { ...config, currentAttemptIndex: config.currentAttemptIndex + 1 };
+      const newConfig = {
+        ...config,
+        currentAttemptIndex: config.currentAttemptIndex + 1,
+      };
+      Cookies.set(`ARUBA-${fullDate}`, JSON.stringify(newConfig));
+      return newConfig;
     });
   };
   return {

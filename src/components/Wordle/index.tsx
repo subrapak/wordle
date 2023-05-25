@@ -1,3 +1,4 @@
+"use client";
 import { useWordle } from "./useWordle";
 import { Wordle as Component } from "./Wordle";
 

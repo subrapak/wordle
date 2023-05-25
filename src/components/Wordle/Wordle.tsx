@@ -1,3 +1,4 @@
+"use client";
 import { CTAButton } from "@/components/Buttons";
 import { Guess } from "@/components/Guess";
 import { Keyboard } from "@/components/Keyboard";
