@@ -19,7 +19,7 @@ export const useWordle = () => {
   useEffect(() => {
     const gameCookie = Cookies.get(`ARUBA-${fullDate}`);
     const cookieGameConfig = gameCookie && JSON.parse(gameCookie);
-    setGameConfig(cookieGameConfig);
+    cookieGameConfig && setGameConfig(cookieGameConfig);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
