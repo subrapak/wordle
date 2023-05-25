@@ -8,9 +8,10 @@ import { CORRECT_WORD } from "@/constants";
 
 interface KeyboardRowProps {
   characters: string;
-  addCharToCurrentGuess?: (char: string) => void;
+  addCharToCurrentGuess: (char: string) => void;
   guesses: string[];
   currentAttemptIndex: number;
+  isDisabled: boolean;
 }
 
 export const KeyboardRow: React.FC<KeyboardRowProps> = ({
@@ -18,10 +19,11 @@ export const KeyboardRow: React.FC<KeyboardRowProps> = ({
   addCharToCurrentGuess,
   guesses,
   currentAttemptIndex,
+  isDisabled = false,
 }) => {
   const characterArray = createCharacterArray(characters);
   return (
-    <div className="flex flex-row justify-center">
+    <div className="flex flex-row justify-center w-full">
       {characterArray.map((char) => {
         const backgroundColor = calculateCharacterColourForKeyboard(
           guesses.slice(0, currentAttemptIndex),
@@ -32,7 +34,9 @@ export const KeyboardRow: React.FC<KeyboardRowProps> = ({
           <KeyboardKey
             key={char}
             char={char}
-            onClickKey={() => addCharToCurrentGuess?.(char)}
+            onClickKey={() => {
+              !isDisabled && addCharToCurrentGuess(char);
+            }}
             backgroundColor={backgroundColor}
           />
         );
