@@ -2,6 +2,7 @@
 import { CTAButton } from "@/components/Buttons";
 import { Guess } from "@/components/Guess";
 import { Keyboard } from "@/components/Keyboard";
+import { DEFAULT_CONFIG, WORD_LENGTH } from "@/constants";
 import { COLOURS } from "@/utils";
 import { useState } from "react";
 
@@ -9,15 +10,10 @@ interface GameConfig {
   guesses: string[];
   currentAttemptIndex: number;
 }
-export const WORD_LENGTH = 5;
-export const CORRECT_WORD = "ARUBA";
-const defaultGameConfig = {
-  guesses: ["", "", "", "", ""],
-  currentAttemptIndex: 0,
-};
+
 export default function Home() {
-  const [gameConfig, setGameConfig] = useState<GameConfig>(defaultGameConfig);
-  const resetGame = () => setGameConfig(defaultGameConfig);
+  const [gameConfig, setGameConfig] = useState<GameConfig>(DEFAULT_CONFIG);
+  const resetGame = () => setGameConfig(DEFAULT_CONFIG);
   const addCharToCurrentGuess = (char: string) => {
     setGameConfig((config) => {
       const currentGuess = config.guesses[config.currentAttemptIndex];

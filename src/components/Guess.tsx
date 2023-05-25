@@ -1,6 +1,6 @@
 import React from "react";
-import { CORRECT_WORD, WORD_LENGTH } from "@/app/page";
 import { calculateCharacterColourFromGuess } from "@/utils";
+import { CORRECT_WORD, WORD_LENGTH } from "@/constants";
 
 interface GuessProps {
   word: string;
