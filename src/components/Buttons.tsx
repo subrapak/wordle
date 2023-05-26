@@ -14,11 +14,17 @@ export const CTAButton: React.FC<CTAButtonProps> = ({
 }) => {
   return (
     <button
-      className={`flex justify-center items-center px-12 mx-4 h-10 rounded-md ${bgColor} cursor-pointer text-stone-50`}
+      className={`flex justify-center font-mono items-center px-12 mx-4 h-10 rounded-md ${bgColor} cursor-pointer text-stone-50`}
       onClick={onClick}
       disabled={isDisabled}
     >
       {text}
     </button>
   );
+};
+
+export const ActionButtonContainer: React.FC<React.PropsWithChildren> = ({
+  children,
+}) => {
+  return <div className="flex flex-row mt-2">{children}</div>;
 };

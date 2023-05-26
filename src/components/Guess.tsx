@@ -27,7 +27,7 @@ export const Guess: React.FC<GuessProps> = ({
           return (
             <div
               key={count}
-              className={`flex text-stone-50 aspect-square w-10 sm:w-14 m-1 justify-center items-center rounded ${bgColor}`}
+              className={`flex font-bold text-stone-50 aspect-square w-8 m-1 justify-center items-center rounded ${bgColor}`}
             >
               {!disable && word?.[characterIndex]}
             </div>
