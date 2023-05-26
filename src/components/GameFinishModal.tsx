@@ -6,11 +6,14 @@ interface GameFinishModalProps extends ModalConfig {
   message?: string;
 }
 
-export const GameFinishModal: React.FC<GameFinishModalProps> = ({
+export const GameFinishModal: React.FC<
+  React.PropsWithChildren<GameFinishModalProps>
+> = ({
   isVisible,
   handleCloseModal,
   title = "Nothing to see here",
   message = "Success message TBD based on ur performance...",
+  children,
 }) => {
   const handleForegroundClick = (event: React.MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
@@ -29,6 +32,7 @@ export const GameFinishModal: React.FC<GameFinishModalProps> = ({
         <p className="text-black text-2xl text-center font-bold my-4">
           {title}
         </p>
+        {children}
         <p className="text-sky-800 text-m text-center font-semibold my-4">
           {message}
         </p>

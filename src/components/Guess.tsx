@@ -5,9 +5,14 @@ import React from "react";
 interface GuessProps {
   word: string;
   backgroundColor?: string;
+  disable?: boolean;
 }
 
-export const Guess: React.FC<GuessProps> = ({ word, backgroundColor }) => {
+export const Guess: React.FC<GuessProps> = ({
+  word,
+  backgroundColor,
+  disable = false,
+}) => {
   return (
     <div className="flex flex-row">
       {Array.from(Array(CORRECT_WORD.length).keys()).map(
@@ -24,7 +29,7 @@ export const Guess: React.FC<GuessProps> = ({ word, backgroundColor }) => {
               key={count}
               className={`flex text-stone-50 aspect-square w-10 sm:w-14 m-1 justify-center items-center rounded ${bgColor}`}
             >
-              {word?.[characterIndex]}
+              {!disable && word?.[characterIndex]}
             </div>
           );
         }

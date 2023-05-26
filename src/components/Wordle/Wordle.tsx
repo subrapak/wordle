@@ -10,6 +10,7 @@ import { COLOURS } from "@/utils";
 import React from "react";
 import { GameFinishModal } from "../GameFinishModal";
 import { useWordle } from "./useWordle";
+import { Guesses } from "../Guesses";
 
 interface WordleProps extends ReturnType<typeof useWordle> {}
 
@@ -34,21 +35,7 @@ export const Wordle: React.FC<WordleProps> = ({
           {`Arohan's Aruba Wordle`}
         </div>
       </div>
-      <div>
-        {Array.from(Array(gameConfig.guesses.length).keys()).map(
-          (guess, guessIndex) => (
-            <Guess
-              key={guess}
-              word={gameConfig.guesses[guessIndex]}
-              backgroundColor={
-                guessIndex >= gameConfig.currentAttemptIndex
-                  ? COLOURS.KEYBOARD_UNSELECTED_GREY
-                  : undefined
-              }
-            />
-          )
-        )}
-      </div>
+      <Guesses gameConfig={gameConfig} />
 
       <Keyboard
         addCharToCurrentGuess={addCharToCurrentGuess}
@@ -93,7 +80,9 @@ export const Wordle: React.FC<WordleProps> = ({
         handleCloseModal={failModal.close}
         title={"❌ It's giving fail. ❌"}
         message={`Don't be sorry. Be Better.`}
-      />
+      >
+        <Guesses gameConfig={gameConfig} isDisabled />
+      </GameFinishModal>
       <GameFinishModal
         {...successModal.config}
         handleCloseModal={successModal.close}
@@ -101,7 +90,9 @@ export const Wordle: React.FC<WordleProps> = ({
         message={
           MODAL_MESSAGES_BY_GUESS_INDEX[gameConfig.currentAttemptIndex - 1]
         }
-      />
+      >
+        <Guesses gameConfig={gameConfig} isDisabled />
+      </GameFinishModal>
     </>
   );
 };
