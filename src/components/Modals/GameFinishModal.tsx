@@ -20,13 +20,13 @@ export const GameFinishModal: React.FC<
   };
   return (
     <div
-      className={`fixed inset-0 px-4 flex items-center justify-center z-50 bg-black bg-opacity-30 backdrop-blur-sm transition-opacity duration-500 ${
+      className={`fixed inset-0 h-full w-full px-4 flex items-center justify-center z-50 bg-black bg-opacity-30 backdrop-blur-sm transition-opacity duration-500 ${
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
       onClick={handleCloseModal}
     >
       <div
-        className="bg-white flex-col flex items-center justify-center rounded-lg p-10 py-5"
+        className="bg-white flex-col flex items-center justify-center rounded-lg p-10 py-5 w-4/5"
         onClick={handleForegroundClick}
       >
         <p className="text-black text-2xl text-center font-bold my-4">

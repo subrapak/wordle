@@ -1,6 +1,7 @@
 import { GameConfig, ModalConfig } from "./types";
 
-export const CORRECT_WORD = "TOWEL";
+export const ARUBA_FLIGHT_DATE = new Date(2023, 5, 22, 10);
+export const CORRECT_WORD = "BONDIA";
 export const DEFAULT_GAME_CONFIG: GameConfig = {
   guesses: ["", "", "", "", ""],
   currentAttemptIndex: 0,
