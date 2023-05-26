@@ -1,91 +1,36 @@
 "use client";
-import {
-  CORRECT_WORD,
-  DEFAULT_GAME_CONFIG,
-  DEFAULT_MODAL_CONFIG,
-} from "@/constants";
+import { setGameCookieForDate } from "@/cookies";
+import { getTodaysDateCode } from "@/datetime";
+import { useGameMechanics } from "@/hooks/useGameMechanics";
+import { usePersistedGame } from "@/hooks/usePersistedGame";
 import { GameConfig } from "@/types";
-import Cookies from "js-cookie";
-import { useEffect, useState } from "react";
+import { useModal } from "../Modals/useModal";
 
 export const useWordle = () => {
-  const [gameConfig, setGameConfig] = useState<GameConfig>(DEFAULT_GAME_CONFIG);
-  const now = new Date();
-  const date = now.getDate();
-  const month = now.getMonth();
-  const year = now.getFullYear();
-  const fullDate = `${date}-${month}-${year}`;
-  useEffect(() => {
-    const gameCookie = Cookies.get(`ARUBA-${fullDate}`);
-    const cookieGameConfig = gameCookie && JSON.parse(gameCookie);
-    cookieGameConfig && setGameConfig(cookieGameConfig);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const resetGame = () => setGameConfig(DEFAULT_GAME_CONFIG);
-  const addCharToCurrentGuess = (char: string) => {
-    setGameConfig((config) => {
-      const currentGuess = config.guesses[config.currentAttemptIndex];
-      if (currentGuess.length === CORRECT_WORD.length) {
-        return config;
-      }
-      const newCurrentGuess = `${currentGuess}${char.toUpperCase()}`;
-      const newGuesses = [
-        ...config.guesses.slice(0, config.currentAttemptIndex),
-        newCurrentGuess,
-        ...config.guesses.slice(config.currentAttemptIndex + 1),
-      ];
-
-      return { ...config, guesses: newGuesses };
-    });
+  const persistGameWithConfig = (config: GameConfig) => {
+    const todaysDateCode = getTodaysDateCode();
+    setGameCookieForDate(todaysDateCode, config);
   };
+  const [failModalConfig, showFailModal, hideFailModal] = useModal();
+  const [successModalConfig, showSuccessModal, hideSuccessModal] = useModal();
 
-  const deleteLatestChar = () => {
-    setGameConfig((config) => {
-      const currentGuess = config.guesses[config.currentAttemptIndex];
-      const newCurrentGuess = currentGuess.slice(0, currentGuess.length - 1);
-      const newGuesses = [
-        ...config.guesses.slice(0, config.currentAttemptIndex),
-        newCurrentGuess,
-        ...config.guesses.slice(config.currentAttemptIndex + 1),
-      ];
-      return { ...config, guesses: newGuesses };
-    });
-  };
-  const [failModalConfig, setFailModalConfig] = useState(DEFAULT_MODAL_CONFIG);
-  const [successModalConfig, setSuccessModalConfig] =
-    useState(DEFAULT_MODAL_CONFIG);
-  const showSuccessModal = () =>
-    setSuccessModalConfig((config) => ({ ...config, isVisible: true }));
-  const hideSuccessModal = () =>
-    setSuccessModalConfig((config) => ({ ...config, isVisible: false }));
-  const showFailModal = () =>
-    setFailModalConfig((config) => ({ ...config, isVisible: true }));
-  const hideFailModal = () =>
-    setFailModalConfig((config) => ({ ...config, isVisible: false }));
+  const {
+    gameConfig,
+    setGameConfig,
+    isGameLost,
+    isGameWon,
+    resetGame,
+    addCharToCurrentGuess,
+    deleteLatestChar,
+    submitLatestAttempt,
+  } = useGameMechanics({
+    onSuccess: showSuccessModal,
+    onFail: showFailModal,
+    onSubmitAttempt: persistGameWithConfig,
+  });
 
-  const isGameWon =
-    gameConfig.guesses[gameConfig.currentAttemptIndex - 1] === CORRECT_WORD;
-  const isGameLost =
-    !isGameWon && gameConfig.currentAttemptIndex === gameConfig.guesses.length;
+  usePersistedGame({ setGameConfig });
 
-  const submitLatestAttempt = () => {
-    setGameConfig((config) => {
-      const isGuessCorrect =
-        config.guesses[config.currentAttemptIndex] === CORRECT_WORD;
-      if (isGuessCorrect) {
-        showSuccessModal();
-      } else if (config.currentAttemptIndex + 1 === config.guesses.length) {
-        showFailModal();
-      }
-      const newConfig = {
-        ...config,
-        currentAttemptIndex: config.currentAttemptIndex + 1,
-      };
-      Cookies.set(`ARUBA-${fullDate}`, JSON.stringify(newConfig));
-      return newConfig;
-    });
-  };
   return {
     gameConfig,
     resetGame,
