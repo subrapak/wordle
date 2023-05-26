@@ -1,7 +1,6 @@
 import { GameConfig, ModalConfig } from "./types";
 
-export const WORD_LENGTH = 5;
-export const CORRECT_WORD = "ARUBA";
+export const CORRECT_WORD = "TOWEL";
 export const DEFAULT_GAME_CONFIG: GameConfig = {
   guesses: ["", "", "", "", ""],
   currentAttemptIndex: 0,

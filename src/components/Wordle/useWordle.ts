@@ -1,13 +1,12 @@
 "use client";
 import {
-  DEFAULT_GAME_CONFIG,
-  WORD_LENGTH,
-  DEFAULT_MODAL_CONFIG,
   CORRECT_WORD,
+  DEFAULT_GAME_CONFIG,
+  DEFAULT_MODAL_CONFIG,
 } from "@/constants";
 import { GameConfig } from "@/types";
-import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
+import { useEffect, useState } from "react";
 
 export const useWordle = () => {
   const [gameConfig, setGameConfig] = useState<GameConfig>(DEFAULT_GAME_CONFIG);
@@ -27,7 +26,7 @@ export const useWordle = () => {
   const addCharToCurrentGuess = (char: string) => {
     setGameConfig((config) => {
       const currentGuess = config.guesses[config.currentAttemptIndex];
-      if (currentGuess.length === WORD_LENGTH) {
+      if (currentGuess.length === CORRECT_WORD.length) {
         return config;
       }
       const newCurrentGuess = `${currentGuess}${char.toUpperCase()}`;
