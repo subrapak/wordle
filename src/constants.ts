@@ -21,7 +21,7 @@ export const MODAL_MESSAGES_BY_GUESS_INDEX: Record<number, string> = {
 export const MODAL_TITLES_BY_GUESS_INDEX: Record<number, string> = {
   0: "🧢 The Cap Master 🧢",
   1: "👑 King/Queen Moves 👑",
-  2: "👍 Not Bad TBH 👍",
+  2: "👍 Not Bad 👍",
   3: "🤡 The Clown 🤡",
   4: "🫥 Let's Not Even 🫥",
 };

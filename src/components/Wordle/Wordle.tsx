@@ -1,16 +1,14 @@
 "use client";
 import { CTAButton } from "@/components/Buttons";
-import { Guess } from "@/components/Guess";
 import { Keyboard } from "@/components/Keyboard";
 import {
   MODAL_MESSAGES_BY_GUESS_INDEX,
   MODAL_TITLES_BY_GUESS_INDEX,
 } from "@/constants";
-import { COLOURS } from "@/utils";
 import React from "react";
-import { GameFinishModal } from "../GameFinishModal";
-import { useWordle } from "./useWordle";
+import { GameFinishModal } from "../Modals/GameFinishModal";
 import { Guesses } from "../Guesses";
+import { useWordle } from "./useWordle";
 
 interface WordleProps extends ReturnType<typeof useWordle> {}
 
