@@ -22,7 +22,7 @@ export const Guess: React.FC<GuessProps> = ({ word, backgroundColor }) => {
           return (
             <div
               key={count}
-              className={`flex aspect-square w-10 sm:w-14 m-1 justify-center items-center rounded ${bgColor}`}
+              className={`flex text-stone-50 aspect-square w-10 sm:w-14 m-1 justify-center items-center rounded ${bgColor}`}
             >
               {word?.[characterIndex]}
             </div>

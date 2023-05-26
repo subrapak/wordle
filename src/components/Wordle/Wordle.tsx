@@ -28,7 +28,7 @@ export const Wordle: React.FC<WordleProps> = ({
     <>
       <div className="flex flex-col gap-4">
         <div
-          className="rounded px-4 z-10 w-full max-w-5xl items-center justify-center font-mono text-center lg:flex mb-20 cursor-pointer"
+          className="rounded px-4 z-10 w-full max-w-5xl items-center justify-center font-mono text-center lg:flex mb-20 cursor-pointer text-stone-50"
           onClick={resetGame}
         >
           {`Arohan's Aruba Wordle`}
@@ -73,7 +73,7 @@ export const Wordle: React.FC<WordleProps> = ({
       <div>
         {isGameWon && (
           <div
-            className="rounded px-4 py-2 z-10 w-full max-w-5xl items-center justify-center font-mono text-center lg:flex mb-20 bg-slate-800 cursor-pointer"
+            className="rounded px-4 py-2 z-10 w-full max-w-5xl items-center justify-center font-mono text-center lg:flex mb-20 bg-slate-800 cursor-pointer text-stone-50"
             onClick={successModal.open}
           >
             Share
