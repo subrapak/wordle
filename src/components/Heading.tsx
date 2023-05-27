@@ -15,7 +15,7 @@ export const Heading: React.FC<HeadingProps> = ({ onClickHeading }) => {
         {`Countdown To Aruba`}
       </div>
       <CountdownToDate date={ARUBA_FLIGHT_DATE} />
-      <div className=" font-mono text-center text-xs px-10">{`Hint: A greeting in Papiamento, Aruba's national language. Quite similar to Portuguese, actually. (3,3)`}</div>
+      <div className="font-mono text-center text-xs px-10 text-stone-50">{`Hint: A greeting in Papiamento, Aruba's national language. Quite similar to Portuguese, actually. (3,3)`}</div>
     </div>
   );
 };
