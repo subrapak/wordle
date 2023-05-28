@@ -1,3 +1,5 @@
+import { SUCCESS_EXPLANATION } from "@/constants";
+
 interface ShareProps {
   displaySuccessShare: boolean;
   onClickSuccessShare: () => void;
@@ -12,14 +14,21 @@ export const Share: React.FC<ShareProps> = ({
   onClickFailShare,
 }) => {
   return (
-    <div>
+    <div className="flex flex-col gap-2">
       {displaySuccessShare && (
-        <div
-          className="rounded px-4 py-2 w-full max-w-5xl items-center justify-center font-mono text-center bg-slate-800 cursor-pointer text-stone-50"
-          onClick={onClickSuccessShare}
-        >
-          Share
-        </div>
+        <>
+          <div>
+            <div className="font-mono text-center text-xs px-10 text-stone-50">
+              {SUCCESS_EXPLANATION}
+            </div>
+          </div>
+          <div
+            className="rounded px-4 py-2 w-full max-w-5xl items-center justify-center font-mono text-center bg-slate-800 cursor-pointer text-stone-50"
+            onClick={onClickSuccessShare}
+          >
+            Share
+          </div>
+        </>
       )}
       {displayFailShare && (
         <div

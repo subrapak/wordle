@@ -6,3 +6,8 @@ export interface GameConfig {
 export interface ModalConfig {
   isVisible: boolean;
 }
+
+export interface FailureMessage {
+  title: string;
+  text: string;
+}

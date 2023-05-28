@@ -1,9 +1,7 @@
-import { ModalConfig } from "@/types";
+import { FailureMessage, ModalConfig } from "@/types";
 
-interface GameFinishModalProps extends ModalConfig {
+interface GameFinishModalProps extends ModalConfig, FailureMessage {
   handleCloseModal: () => void;
-  title?: string;
-  message?: string;
 }
 
 export const GameFinishModal: React.FC<
@@ -12,7 +10,7 @@ export const GameFinishModal: React.FC<
   isVisible,
   handleCloseModal,
   title = "Nothing to see here",
-  message = "Success message TBD based on ur performance...",
+  text = "Success message TBD based on ur performance...",
   children,
 }) => {
   const handleForegroundClick = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -26,7 +24,7 @@ export const GameFinishModal: React.FC<
       onClick={handleCloseModal}
     >
       <div
-        className="bg-white flex-col flex items-center justify-center rounded-lg p-10 py-5 w-4/5"
+        className="bg-white flex-col flex items-center justify-center rounded-lg p-10 py-5 min-w-4/5"
         onClick={handleForegroundClick}
       >
         <p className="text-black text-2xl text-center font-bold my-4">
@@ -34,7 +32,7 @@ export const GameFinishModal: React.FC<
         </p>
         {children}
         <p className="text-sky-800 text-m text-center font-semibold my-4">
-          {message}
+          {text}
         </p>
         <p className="text-xs text-gray-600 text-center">
           Now you can screenshot this and send it in the chat, well done have a

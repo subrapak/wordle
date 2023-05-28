@@ -51,3 +51,6 @@ export const createCharacterArray = (characters: string) => {
   }
   return characterArray;
 };
+
+export const generateRandomObjectKey = (object: Record<number, any>) =>
+  Math.floor(Object.keys(object).length * Math.random());
