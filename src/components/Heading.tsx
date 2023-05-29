@@ -20,7 +20,10 @@ export const Heading: React.FC<HeadingProps> = ({ onClickHeading }) => {
       </div>
       <CountdownToDate date={ARUBA_FLIGHT_DATE} />
       <div className="font-mono text-center text-xs px-10 text-stone-50">
-        {`First word hint: ${FIRST_WORD_HINT}`}
+        {`First word hint (to give you a good start)`}
+      </div>
+      <div className="font-mono text-center text-xs px-10 text-stone-50">
+        {FIRST_WORD_HINT}
       </div>
     </div>
   );
