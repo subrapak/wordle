@@ -49,8 +49,13 @@ export const useGameMechanics = ({
       return { ...config, guesses: newGuesses };
     });
   };
+
   const submitLatestAttempt = () => {
     setGameConfig((config) => {
+      const currentGuess = config.guesses[config.currentAttemptIndex];
+      if (currentGuess.length < 5) {
+        return config;
+      }
       const isGuessCorrect =
         config.guesses[config.currentAttemptIndex] === CORRECT_WORD;
       if (isGuessCorrect) {
@@ -63,7 +68,6 @@ export const useGameMechanics = ({
         currentAttemptIndex: config.currentAttemptIndex + 1,
       };
       onSubmitAttempt?.(newConfig);
-      //   Cookies.set(`ARUBA-${todaysDateCode}`, JSON.stringify(newConfig));
       return newConfig;
     });
   };

@@ -1,8 +1,4 @@
-import {
-  ARUBA_FLIGHT_DATE,
-  FIRST_WORD_HINT,
-  SUCCESS_EXPLANATION,
-} from "@/constants";
+import { ARUBA_FLIGHT_DATE, FIRST_WORD_HINT } from "@/constants";
 import { CountdownToDate } from "./CountdownToDate/CountdownToDate";
 
 interface HeadingProps {
@@ -20,7 +16,7 @@ export const Heading: React.FC<HeadingProps> = ({ onClickHeading }) => {
       </div>
       <CountdownToDate date={ARUBA_FLIGHT_DATE} />
       <div className="font-mono text-center text-xs px-10 text-stone-50">
-        {`First word hint (to give you a good start)`}
+        {`First word hint (remember: this just gives you a good start, it's not a definition of the final word)`}
       </div>
       <div className="font-mono text-center text-xs px-10 text-stone-50">
         {FIRST_WORD_HINT}

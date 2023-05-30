@@ -1,9 +1,9 @@
 import { FailureMessage, GameConfig, ModalConfig } from "./types";
 
 export const ARUBA_FLIGHT_DATE = new Date(2023, 5, 22, 10);
-export const CORRECT_WORD = "ARCADIAN";
-export const FIRST_WORD_HINT = `Something you'd wear to on a stormy day`;
-export const SUCCESS_EXPLANATION = `(adj) Relating to or constituting an ideal rural paradise.`;
+export const CORRECT_WORD = "PEPAS";
+export const FIRST_WORD_HINT = `Fun to watch as a kid, but haram to eat`;
+export const SUCCESS_EXPLANATION = `(adj) An absolute banger that we'll hear a lot of in Aruba, or so I've been told`;
 export const DEFAULT_GAME_CONFIG: GameConfig = {
   guesses: ["", "", "", "", ""],
   currentAttemptIndex: 0,
