@@ -18,7 +18,7 @@ export default function RootLayout({
     <>
       <html lang="en" className="flex w-100vw h-full bg-cyan-600 overflow-auto">
         <head>
-          {process.env.NEXT_PUBLIC_APP_ENV === "production" && (
+          {
             <script
               dangerouslySetInnerHTML={{
                 __html: `
@@ -30,7 +30,7 @@ export default function RootLayout({
             `,
               }}
             />
-          )}
+          }
         </head>
         <body className={`${inter.className} w-full h-full overflow-auto`}>
           {children}
