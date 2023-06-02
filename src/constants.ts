@@ -1,9 +1,9 @@
 import { FailureMessage, GameConfig, ModalConfig } from "./types";
 
 export const ARUBA_FLIGHT_DATE = new Date(2023, 5, 22, 10);
-export const CORRECT_WORD = "BEACH";
-export const FIRST_WORD_HINT = `En Español, decimos barato, but in English, we say _____`;
-export const SUCCESS_EXPLANATION = `I mean, ain't it obvious`;
+export const CORRECT_WORD = "PIRATES";
+export const FIRST_WORD_HINT = `White, tea, suprise, dinner`;
+export const SUCCESS_EXPLANATION = `Jolly Pirates Cruise!`;
 export const DEFAULT_GAME_CONFIG: GameConfig = {
   guesses: ["", "", "", "", ""],
   currentAttemptIndex: 0,
