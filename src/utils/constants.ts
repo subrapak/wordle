@@ -57,3 +57,46 @@ export const FAILURE_MESSAGES: Record<number, FailureMessage> = {
     text: `¿Dónde está tu cerebro? `,
   },
 };
+
+type UserName =
+  | "Arohan"
+  | "Priya"
+  | "Sameer"
+  | "Kash"
+  | "Mihir"
+  | "Rad"
+  | "Sooria"
+  | "Gino"
+  | "Aishah"
+  | "Dorsa"
+  | "Ferhaan"
+  | "Saira"
+  | "Sharina"
+  | "Prerna"
+  | "Nishika"
+  | "Jiten"
+  | "Kiara";
+
+interface UserConfig {
+  name: UserName;
+  password: string;
+}
+export const USER_INFO: Record<UserName, string> = {
+  "Rad": "radiant",
+  "Mihir": "mimi",
+  "Kash": "$$$",
+  "Sameer": "samuele",
+  "Arohan": "arojuan",
+  "Priya": "piya",
+  "Gino": "glenn",
+  "Ferhaan": "longlung",
+  "Saira": "saisai",
+  "Nishika": "fishika",
+  "Aishah": "aish",
+  "Dorsa": "dosa",
+  "Jiten": "g10",
+  "Sooria": "sideman",
+  "Prerna": "prendog",
+  "Sharina": "rapunzel",
+  "Kiara": "kiks",
+};
