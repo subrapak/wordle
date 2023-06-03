@@ -1,5 +1,5 @@
-import { CORRECT_WORD } from "@/constants";
-import { calculateCharacterColourFromGuess } from "@/utils";
+import { CORRECT_WORD } from "@/utils/constants";
+import { calculateCharacterColourFromGuess } from "@/utils/game";
 import React from "react";
 
 interface GuessProps {

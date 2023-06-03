@@ -1,13 +1,14 @@
 "use client";
-import { setGameCookieForDate } from "@/cookies";
-import { getTodaysDateCode } from "@/datetime";
+import { useFailureMessage } from "@/hooks/useFailureMessage";
 import { useGameMechanics } from "@/hooks/useGameMechanics";
 import { usePersistedGame } from "@/hooks/usePersistedGame";
-import { GameConfig } from "@/types";
+import { setGameCookieForDate } from "@/utils/cookies";
+import { getTodaysDateCode } from "@/utils/datetime";
+import { GameConfig } from "@/utils/types";
 import { useModal } from "../Modals/useModal";
-import { useEffect, useState } from "react";
-import { FAILURE_MESSAGES } from "@/constants";
-import { generateRandomObjectKey } from "@/utils";
+import { useClipboard } from "@/hooks/useClipboard";
+import { convertGameIntoTextToCopy } from "@/utils/game";
+import { WHATSAPP_GROUP_LINK } from "@/utils/constants";
 
 export const useWordle = () => {
   const persistGameWithConfig = (config: GameConfig) => {
@@ -31,16 +32,18 @@ export const useWordle = () => {
     onFail: showFailModal,
     onSubmitAttempt: persistGameWithConfig,
   });
-  const [failureMessage, setFailureMessage] = useState(FAILURE_MESSAGES[0]);
-  useEffect(() => {
-    const randomFailureTitle =
-      FAILURE_MESSAGES[generateRandomObjectKey(FAILURE_MESSAGES)].title;
-    const randomFailureText =
-      FAILURE_MESSAGES[generateRandomObjectKey(FAILURE_MESSAGES)].text;
-    setFailureMessage({ text: randomFailureText, title: randomFailureTitle });
-  }, []);
+  const failureMessage = useFailureMessage();
 
   usePersistedGame({ setGameConfig });
+
+  const [copyTextToClipboard] = useClipboard(
+    "Game copied! Click OK to share..."
+  );
+  const onClickShare = async () => {
+    const gameTextToShare = convertGameIntoTextToCopy(gameConfig);
+    copyTextToClipboard(gameTextToShare);
+    setTimeout(() => (document.location.href = WHATSAPP_GROUP_LINK), 1000);
+  };
 
   return {
     failureMessage,
@@ -51,6 +54,7 @@ export const useWordle = () => {
     submitLatestAttempt,
     isGameWon,
     isGameLost,
+    onClickShare,
     successModal: {
       config: successModalConfig,
       open: showSuccessModal,

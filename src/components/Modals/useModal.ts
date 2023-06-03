@@ -1,6 +1,6 @@
 "use client";
 
-import { DEFAULT_MODAL_CONFIG } from "@/constants";
+import { DEFAULT_MODAL_CONFIG } from "@/utils/constants";
 import { useState } from "react";
 
 export const useModal = () => {

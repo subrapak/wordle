@@ -1,4 +1,4 @@
-import { createCharacterArray } from "@/utils";
+import { createCharacterArray } from "@/utils/game";
 import React, { useEffect, useRef, useState } from "react";
 import { PanelWithLabel } from "./PanelWithLabel";
 

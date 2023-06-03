@@ -1,6 +1,6 @@
-import { getGameCookieForDate } from "@/cookies";
-import { getTodaysDateCode } from "@/datetime";
-import { GameConfig } from "@/types";
+import { getGameCookieForDate } from "@/utils/cookies";
+import { getTodaysDateCode } from "@/utils/datetime";
+import { GameConfig } from "@/utils/types";
 
 import { useEffect } from "react";
 

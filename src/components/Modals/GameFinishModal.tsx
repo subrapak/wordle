@@ -1,7 +1,8 @@
-import { FailureMessage, ModalConfig } from "@/types";
+import { FailureMessage, ModalConfig } from "@/utils/types";
 
 interface GameFinishModalProps extends ModalConfig, FailureMessage {
   handleCloseModal: () => void;
+  onClickShare?: () => Promise<void>;
 }
 
 export const GameFinishModal: React.FC<
@@ -9,6 +10,7 @@ export const GameFinishModal: React.FC<
 > = ({
   isVisible,
   handleCloseModal,
+  onClickShare,
   title = "Nothing to see here",
   text = "Success message TBD based on ur performance...",
   children,
@@ -31,12 +33,14 @@ export const GameFinishModal: React.FC<
           {title}
         </p>
         {children}
-        <p className="text-sky-800 text-m text-center font-semibold my-4">
+        <button
+          className="text-xs text-center my-4 bg-slate-500 text-slate-50 px-4 py-2 rounded cursor-pointer"
+          onClick={onClickShare}
+        >
+          Click to copy
+        </button>
+        <p className="text-sky-800 text-m text-center font-semibold my-2">
           {text}
-        </p>
-        <p className="text-xs text-gray-600 text-center">
-          Now you can screenshot this and send it in the chat, well done have a
-          medal.
         </p>
       </div>
     </div>

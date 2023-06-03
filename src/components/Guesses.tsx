@@ -1,6 +1,6 @@
-import { GameConfig } from "@/types";
+import { GameConfig } from "@/utils/types";
 import { Guess } from "./Guess";
-import { COLOURS } from "@/utils";
+import { COLOURS } from "@/utils/game";
 
 interface GuessesProps {
   gameConfig: GameConfig;

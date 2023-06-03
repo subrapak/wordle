@@ -2,19 +2,15 @@
 import { ActionButtonContainer, CTAButton } from "@/components/Buttons";
 import { Keyboard } from "@/components/Keyboard";
 import {
-  ARUBA_FLIGHT_DATE,
-  FAILURE_MESSAGES,
   MODAL_MESSAGES_BY_GUESS_INDEX,
   MODAL_TITLES_BY_GUESS_INDEX,
-} from "@/constants";
+} from "@/utils/constants";
 import React from "react";
 import { GameFinishModal } from "../Modals/GameFinishModal";
 import { Guesses } from "../Guesses";
 import { useWordle } from "./useWordle";
-import { CountdownToDate } from "../CountdownToDate/CountdownToDate";
 import { Heading } from "../Heading";
 import { Share } from "../Share";
-import { generateRandomObjectKey } from "@/utils";
 
 interface WordleProps extends ReturnType<typeof useWordle> {}
 
@@ -29,6 +25,7 @@ export const Wordle: React.FC<WordleProps> = ({
   successModal,
   failModal,
   failureMessage,
+  onClickShare,
 }) => {
   return (
     <>
@@ -66,6 +63,7 @@ export const Wordle: React.FC<WordleProps> = ({
         handleCloseModal={failModal.close}
         title={failureMessage.title}
         text={failureMessage.text}
+        onClickShare={onClickShare}
       >
         <Guesses gameConfig={gameConfig} isDisabled />
       </GameFinishModal>
@@ -74,6 +72,7 @@ export const Wordle: React.FC<WordleProps> = ({
         handleCloseModal={successModal.close}
         title={MODAL_TITLES_BY_GUESS_INDEX[gameConfig.currentAttemptIndex - 1]}
         text={MODAL_MESSAGES_BY_GUESS_INDEX[gameConfig.currentAttemptIndex - 1]}
+        onClickShare={onClickShare}
       >
         <Guesses gameConfig={gameConfig} isDisabled />
       </GameFinishModal>

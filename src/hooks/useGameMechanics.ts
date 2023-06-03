@@ -1,4 +1,4 @@
-import { CORRECT_WORD, DEFAULT_GAME_CONFIG } from "@/constants";
+import { CORRECT_WORD, DEFAULT_GAME_CONFIG } from "@/utils/constants";
 import { GameConfig } from "@/types";
 import { useState } from "react";
 

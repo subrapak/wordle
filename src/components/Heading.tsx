@@ -1,4 +1,4 @@
-import { ARUBA_FLIGHT_DATE, FIRST_WORD_HINT } from "@/constants";
+import { ARUBA_FLIGHT_DATE, FIRST_WORD_HINT } from "@/utils/constants";
 import { CountdownToDate } from "./CountdownToDate/CountdownToDate";
 
 interface HeadingProps {

@@ -3,8 +3,8 @@ import { KeyboardKey } from "./KeyboardKey";
 import {
   calculateCharacterColourForKeyboard,
   createCharacterArray,
-} from "@/utils";
-import { CORRECT_WORD } from "@/constants";
+} from "@/utils/game";
+import { CORRECT_WORD } from "@/utils/constants";
 
 interface KeyboardRowProps {
   characters: string;

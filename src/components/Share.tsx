@@ -1,4 +1,4 @@
-import { SUCCESS_EXPLANATION } from "@/constants";
+import { SUCCESS_EXPLANATION } from "@/utils/constants";
 
 interface ShareProps {
   displaySuccessShare: boolean;
