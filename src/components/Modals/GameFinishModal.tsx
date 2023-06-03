@@ -1,3 +1,4 @@
+import { COLOURS } from "@/utils/game";
 import { FailureMessage, ModalConfig } from "@/utils/types";
 
 interface GameFinishModalProps extends ModalConfig, FailureMessage {
@@ -34,10 +35,10 @@ export const GameFinishModal: React.FC<
         </p>
         {children}
         <button
-          className="text-xs text-center my-4 bg-slate-500 text-slate-50 px-4 py-2 rounded cursor-pointer"
+          className={`text-xs text-center my-4 text-slate-50 px-4 py-2 rounded cursor-pointer font-mono ${COLOURS.KEYBOARD_UNSELECTED_GREY} outline-none`}
           onClick={onClickShare}
         >
-          Click to copy
+          Share Game
         </button>
         <p className="text-sky-800 text-m text-center font-semibold my-2">
           {text}

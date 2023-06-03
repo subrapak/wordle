@@ -1,5 +1,5 @@
 import { CORRECT_WORD, DEFAULT_GAME_CONFIG } from "@/utils/constants";
-import { GameConfig } from "@/types";
+import { GameConfig } from "@/utils/types";
 import { useState } from "react";
 
 interface UseGameMechanicsArgs {
@@ -21,7 +21,7 @@ export const useGameMechanics = ({
 
   const resetGame = () => setGameConfig(DEFAULT_GAME_CONFIG);
   const addCharToCurrentGuess = (char: string) => {
-    setGameConfig((config) => {
+    setGameConfig((config: GameConfig) => {
       const currentGuess = config.guesses[config.currentAttemptIndex];
       if (currentGuess.length === CORRECT_WORD.length) {
         return config;
@@ -38,7 +38,7 @@ export const useGameMechanics = ({
   };
 
   const deleteLatestChar = () => {
-    setGameConfig((config) => {
+    setGameConfig((config: GameConfig) => {
       const currentGuess = config.guesses[config.currentAttemptIndex];
       const newCurrentGuess = currentGuess.slice(0, currentGuess.length - 1);
       const newGuesses = [
@@ -51,7 +51,7 @@ export const useGameMechanics = ({
   };
 
   const submitLatestAttempt = () => {
-    setGameConfig((config) => {
+    setGameConfig((config: GameConfig) => {
       const currentGuess = config.guesses[config.currentAttemptIndex];
       if (currentGuess.length < 5) {
         return config;

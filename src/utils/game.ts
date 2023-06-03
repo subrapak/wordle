@@ -85,13 +85,22 @@ export const convertGuessesIntoGameBoxes = (guesses: string[]): string => {
     );
     return currentGuessBoxArray.join("");
   });
-  return `${guessBoxes.join("\n")}`;
+  return `${guessBoxes.filter((guess) => guess.length).join("\n")}`;
 };
 export const convertGameIntoTextToCopy = (gameConfig: GameConfig) => {
   const gameBoxes = convertGuessesIntoGameBoxes(gameConfig.guesses);
+  const isGameWon =
+    gameConfig.guesses[gameConfig.currentAttemptIndex - 1] === CORRECT_WORD;
+  const isGameLost =
+    !isGameWon && gameConfig.currentAttemptIndex === gameConfig.guesses.length;
+  const titleText = isGameWon
+    ? `Wordle guessed in`
+    : isGameLost
+    ? `Missed after`
+    : `Job not finished!`;
   const availableAttempts = gameConfig.guesses.length;
-  const gameAttempts = gameConfig.currentAttemptIndex + 1;
-  const text = `Wordle guessed in ${gameAttempts}/${availableAttempts}!\nCan you do better?\nTry this wordle: ${BASE_URL}\n${gameBoxes}\n#mywordle`;
+  const gameAttempts = gameConfig.currentAttemptIndex;
+  const fullTtext = `${titleText} ${gameAttempts}/${availableAttempts}!\nCan you do better?\nTry this wordle: ${BASE_URL}\n${gameBoxes}\n#aruba2023`;
 
-  return text;
+  return fullTtext;
 };

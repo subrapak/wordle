@@ -1,9 +1,12 @@
 import { FailureMessage, GameConfig, ModalConfig } from "./types";
 
+// To change daily
+export const CORRECT_WORD = "SUNCREAM";
+export const FIRST_WORD_HINT = `Creps.`;
+export const SUCCESS_EXPLANATION = ``;
+
+// True Constants
 export const ARUBA_FLIGHT_DATE = new Date(2023, 5, 22, 10);
-export const CORRECT_WORD = "PIRATES";
-export const FIRST_WORD_HINT = `White, tea, suprise, dinner`;
-export const SUCCESS_EXPLANATION = `Jolly Pirates Cruise!`;
 export const BASE_URL = "https://nextjs-3v6pldlpca-nw.a.run.app/";
 export const WHATSAPP_GROUP_LINK =
   "https://chat.whatsapp.com/DPjd3QbMwCy8FQnEBvMROb";
