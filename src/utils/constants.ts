@@ -1,8 +1,8 @@
 import { FailureMessage, GameConfig, ModalConfig } from "./types";
 
 // To change daily
-export const CORRECT_WORD = "SUNCREAM";
-export const FIRST_WORD_HINT = `Creps.`;
+export const CORRECT_WORD = "DEPALM";
+export const FIRST_WORD_HINT = `No hint today. Just go for it`;
 export const SUCCESS_EXPLANATION = ``;
 
 // True Constants

@@ -38,7 +38,7 @@ export const GameFinishModal: React.FC<
           className={`text-xs text-center my-4 text-slate-50 px-4 py-2 rounded cursor-pointer font-mono ${COLOURS.KEYBOARD_UNSELECTED_GREY} outline-none`}
           onClick={onClickShare}
         >
-          Share Game
+          Click me! 😁
         </button>
         <p className="text-sky-800 text-m text-center font-semibold my-2">
           {text}
