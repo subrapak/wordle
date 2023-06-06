@@ -1,7 +1,7 @@
 import { FailureMessage, GameConfig, ModalConfig } from "./types";
 
 // To change daily
-export const CORRECT_WORD = "AVIOS";
+export const CORRECT_WORD = "SINDHI";
 export const FIRST_WORD_HINT = `No hint today. Just go for it`;
 export const SUCCESS_EXPLANATION = ``;
 
