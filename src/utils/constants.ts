@@ -1,8 +1,8 @@
 import { FailureMessage, GameConfig, ModalConfig } from "./types";
 
 // To change daily
-export const CORRECT_WORD = "SINDHI";
-export const FIRST_WORD_HINT = `No hint today. Just go for it`;
+export const CORRECT_WORD = "OLYMPICS";
+export const FIRST_WORD_HINT = `A large molecule made up of repeating subunits known as monomers is a long chain ______. (plural)`;
 export const SUCCESS_EXPLANATION = ``;
 
 // True Constants
