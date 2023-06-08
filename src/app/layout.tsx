@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <>
-      <html lang="en" className="flex w-100vw h-full bg-cyan-600 overflow-auto">
+      <html lang="en" className="bg-neutral-700">
         <head>
           {
             <script
@@ -32,9 +32,7 @@ export default function RootLayout({
             />
           }
         </head>
-        <body className={`${inter.className} w-full h-full overflow-auto`}>
-          {children}
-        </body>
+        <body className={`${inter.className} m-0`}>{children}</body>
       </html>
     </>
   );

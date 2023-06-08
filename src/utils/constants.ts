@@ -1,8 +1,8 @@
 import { FailureMessage, GameConfig, ModalConfig } from "./types";
 
 // To change daily
-export const CORRECT_WORD = "OLYMPICS";
-export const FIRST_WORD_HINT = `A large molecule made up of repeating subunits known as monomers is a long chain ______. (plural)`;
+export const CORRECT_WORD = "TREASURE";
+export const FIRST_WORD_HINT = `Before the mains, you have the _____`;
 export const SUCCESS_EXPLANATION = ``;
 
 // True Constants
@@ -58,7 +58,7 @@ export const FAILURE_MESSAGES: Record<number, FailureMessage> = {
   },
 };
 
-type UserName =
+export type UserName =
   | "Arohan"
   | "Priya"
   | "Sameer"
@@ -75,12 +75,14 @@ type UserName =
   | "Prerna"
   | "Nishika"
   | "Jiten"
-  | "Kiara";
+  | "Kiara"
+  | "Nikhil";
 
-interface UserConfig {
+export interface UserConfig {
   name: UserName;
   password: string;
 }
+
 export const USER_INFO: Record<UserName, string> = {
   "Rad": "radiant",
   "Mihir": "mimi",
@@ -99,4 +101,5 @@ export const USER_INFO: Record<UserName, string> = {
   "Prerna": "prendog",
   "Sharina": "rapunzel",
   "Kiara": "kiks",
+  "Nikhil": "other",
 };

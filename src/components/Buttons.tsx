@@ -26,5 +26,5 @@ export const CTAButton: React.FC<CTAButtonProps> = ({
 export const ActionButtonContainer: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
-  return <div className="flex flex-row mt-2">{children}</div>;
+  return <div className="flex flex-row mt-2 border-none">{children}</div>;
 };

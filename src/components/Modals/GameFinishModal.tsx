@@ -1,7 +1,8 @@
 import { COLOURS } from "@/utils/game";
-import { FailureMessage, ModalConfig } from "@/utils/types";
+import { FailureMessage } from "@/utils/types";
+import { BaseModal, BaseModalProps } from "./BaseModal";
 
-interface GameFinishModalProps extends ModalConfig, FailureMessage {
+interface GameFinishModalProps extends BaseModalProps, FailureMessage {
   handleCloseModal: () => void;
   onClickShare?: () => Promise<void>;
 }
@@ -16,34 +17,19 @@ export const GameFinishModal: React.FC<
   text = "Success message TBD based on ur performance...",
   children,
 }) => {
-  const handleForegroundClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    event.stopPropagation();
-  };
   return (
-    <div
-      className={`fixed inset-0 h-full w-full px-4 flex items-center justify-center z-50 bg-black bg-opacity-30 backdrop-blur-sm transition-opacity duration-500 ${
-        isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
-      }`}
-      onClick={handleCloseModal}
-    >
-      <div
-        className="bg-white flex-col flex items-center justify-center rounded-lg p-10 py-5 min-w-4/5"
-        onClick={handleForegroundClick}
+    <BaseModal isVisible={isVisible} handleCloseModal={handleCloseModal}>
+      <p className="text-black text-2xl text-center font-bold my-4">{title}</p>
+      {children}
+      <button
+        className={`text-xs text-center my-4 text-slate-50 px-4 py-2 rounded cursor-pointer font-mono ${COLOURS.KEYBOARD_UNSELECTED_GREY} outline-none`}
+        onClick={onClickShare}
       >
-        <p className="text-black text-2xl text-center font-bold my-4">
-          {title}
-        </p>
-        {children}
-        <button
-          className={`text-xs text-center my-4 text-slate-50 px-4 py-2 rounded cursor-pointer font-mono ${COLOURS.KEYBOARD_UNSELECTED_GREY} outline-none`}
-          onClick={onClickShare}
-        >
-          Click me! 😁
-        </button>
-        <p className="text-sky-800 text-m text-center font-semibold my-2">
-          {text}
-        </p>
-      </div>
-    </div>
+        Click me! 😁
+      </button>
+      <p className="text-sky-800 text-m text-center font-semibold my-2">
+        {text}
+      </p>
+    </BaseModal>
   );
 };

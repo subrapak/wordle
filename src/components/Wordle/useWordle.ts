@@ -9,6 +9,7 @@ import { useModal } from "../Modals/useModal";
 import { useClipboard } from "@/hooks/useClipboard";
 import { convertGameIntoTextToCopy } from "@/utils/game";
 import { WHATSAPP_GROUP_LINK } from "@/utils/constants";
+import { useLoginModal } from "../Modals/LoginModal/useLoginModal";
 
 export const useWordle = () => {
   const persistGameWithConfig = (config: GameConfig) => {
@@ -45,8 +46,11 @@ export const useWordle = () => {
     setTimeout(() => (document.location.href = WHATSAPP_GROUP_LINK), 1000);
   };
 
+  const loginModalProps = useLoginModal();
+
   return {
     failureMessage,
+    loginModalProps,
     gameConfig,
     resetGame,
     addCharToCurrentGuess,

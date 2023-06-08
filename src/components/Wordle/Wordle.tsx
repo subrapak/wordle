@@ -11,6 +11,8 @@ import { Guesses } from "../Guesses";
 import { useWordle } from "./useWordle";
 import { Heading } from "../Heading";
 import { Share } from "../Share";
+import { LoginModal } from "../Modals/LoginModal/LoginModal";
+import { AuthPill } from "../AuthPill/AuthPill";
 
 interface WordleProps extends ReturnType<typeof useWordle> {}
 
@@ -26,6 +28,7 @@ export const Wordle: React.FC<WordleProps> = ({
   failModal,
   failureMessage,
   onClickShare,
+  loginModalProps,
 }) => {
   return (
     <>
@@ -76,6 +79,11 @@ export const Wordle: React.FC<WordleProps> = ({
       >
         <Guesses gameConfig={gameConfig} isDisabled />
       </GameFinishModal>
+      <LoginModal {...loginModalProps} />
+      <AuthPill
+        username={loginModalProps.username}
+        onClick={loginModalProps.showModal}
+      />
     </>
   );
 };
