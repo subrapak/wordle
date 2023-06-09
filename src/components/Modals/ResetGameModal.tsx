@@ -18,14 +18,12 @@ export const ResetGameModal: React.FC<ResetGameModalProps> = ({
   return (
     <BaseModal isVisible={isVisible} handleCloseModal={handleCloseModal}>
       <p className="m-0 mb-4 text-black text-xl font-mono text-center">{`${username}, enough is enough.`}</p>
-      <p className="text-black text-xs font-mono text-center">{`Some people have been abusing their inside knowledge a little too much. It's time we flipped the script.`}</p>
-      <p className="text-black text-xs font-mono text-center m-0">{`
-      To do this, I just need 2 things from you:`}</p>
+      <p className="text-black text-xs font-mono text-center">{`Some people have been abusing their inside knowledge a little too much. So I did a couple of things.`}</p>
       <ol>
-        <li className="text-black text-xs font-mono m-0">{`Share your game in the chat once you're done`}</li>
-        <li className="text-black text-xs font-mono m-0">{`Tell your friends to do the same`}</li>
+        <li className="text-black text-xs font-mono m-0">{`I made this game impossible to win if your name is 'Mihir'`}</li>
+        <li className="text-black text-xs font-mono m-0">{`Otherwise, you can win just by clicking the button below`}</li>
       </ol>
-      <div className="flex flex-row align-middle">
+      {/* <div className="flex flex-row align-middle">
         <FormControlLabel
           sx={{
             color: "black",
@@ -37,32 +35,30 @@ export const ResetGameModal: React.FC<ResetGameModalProps> = ({
               onClick={() => setIsChecked((v) => !v)}
             />
           }
-          label="Yes, ofc I can do that Arohan"
+          label="Check this box to win the game (PS it's impossible otherwise)"
         />
-      </div>
+      </div> */}
 
-      {isChecked && (
-        <>
-          <p className="text-black text-md font-mono text-center">{`Good Choice.`}</p>
-          <Button
-            variant="contained"
-            color="info"
-            onClick={() => {
-              onClickButton();
-              handleCloseModal();
-            }}
-            className="my-2"
-          >
-            Win Game!
-          </Button>
-          <p className="text-black text-xs font-mono text-center">{`PS. Yes, 'some people' is Mihir.`}</p>
-          <p className="text-black text-xs font-mono text-center">{`PPS. No, he can't see this.`}</p>
-          <p className="text-black text-xs font-mono text-center">
-            {`PPPS. @Rad I swear if you tell him we'll all know it was you and I'm ratting you out`}
-            <i>{" immediately"}</i>
-          </p>
-        </>
-      )}
+      <>
+        <p className="text-black text-md font-mono text-center">{`Good Choice.`}</p>
+        <Button
+          variant="contained"
+          color="info"
+          onClick={() => {
+            onClickButton();
+            handleCloseModal();
+          }}
+          className="my-2"
+        >
+          Win Game!
+        </Button>
+        <p className="text-black text-xs font-mono text-center">{`PS. There is no actual word today, don't bother guessing.`}</p>
+        <p className="text-black text-xs font-mono text-center">{`PPS. No, Mihir can't see any of this.`}</p>
+        <p className="text-black text-xs font-mono text-center">
+          {`PPPS. @Rad I swear if you tell him we'll all know it was you and I'm ratting you out`}
+          <i>{" immediately"}</i>
+        </p>
+      </>
     </BaseModal>
   );
 };
