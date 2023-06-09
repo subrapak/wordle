@@ -52,10 +52,11 @@ export const useWordle = () => {
   const [isShowingResetPill, setIsShowingResetPill] = useState(false);
   const [disablePillTransition, setDisablePillTransition] = useState(false);
 
+  const isNotMihir = loginModalProps.username !== "Mihir";
   useEffect(() => {
     if (loginModalProps.isAuthenticated) {
       setTimeout(() => {
-        loginModalProps.username !== "Mihir" && setIsShowingResetPill(true);
+        isNotMihir && setIsShowingResetPill(true);
       }, 1000);
     }
   }, []);
@@ -90,5 +91,6 @@ export const useWordle = () => {
     setIsShowingResetPill,
     disablePillTransition,
     setDisablePillTransition,
+    isNotMihir,
   };
 };

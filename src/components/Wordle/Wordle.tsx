@@ -36,6 +36,7 @@ export const Wordle: React.FC<WordleProps> = ({
   disablePillTransition,
   setDisablePillTransition,
   resetGame,
+  isNotMihir,
 }) => {
   return (
     <>
@@ -109,7 +110,7 @@ export const Wordle: React.FC<WordleProps> = ({
           setIsShowingResetPill(true);
         }}
       />
-      {!!loginModalProps.isAuthenticated && (
+      {!!loginModalProps.isAuthenticated && isNotMihir && (
         <SpecialSnackbar
           isVisible={isShowingResetPill}
           onClickSnackbar={() => {
@@ -121,7 +122,8 @@ export const Wordle: React.FC<WordleProps> = ({
       )}
       <AuthPill
         username={loginModalProps.username}
-        onClick={loginModalProps.showModal}
+        // onClick={loginModalProps.showModal}
+        onClick={() => {}}
       />
     </>
   );
