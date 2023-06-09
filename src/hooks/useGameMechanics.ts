@@ -53,7 +53,7 @@ export const useGameMechanics = ({
   const submitLatestAttempt = () => {
     setGameConfig((config: GameConfig) => {
       const currentGuess = config.guesses[config.currentAttemptIndex];
-      if (currentGuess.length < 5) {
+      if (currentGuess.length < CORRECT_WORD.length) {
         return config;
       }
       const isGuessCorrect =

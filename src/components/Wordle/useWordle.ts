@@ -10,6 +10,7 @@ import { useClipboard } from "@/hooks/useClipboard";
 import { convertGameIntoTextToCopy } from "@/utils/game";
 import { WHATSAPP_GROUP_LINK } from "@/utils/constants";
 import { useLoginModal } from "../Modals/LoginModal/useLoginModal";
+import { useEffect, useState } from "react";
 
 export const useWordle = () => {
   const persistGameWithConfig = (config: GameConfig) => {
@@ -18,6 +19,7 @@ export const useWordle = () => {
   };
   const [failModalConfig, showFailModal, hideFailModal] = useModal();
   const [successModalConfig, showSuccessModal, hideSuccessModal] = useModal();
+  const [resetGameModal, showResetGameModal, hideResetGameModal] = useModal();
 
   const {
     gameConfig,
@@ -47,6 +49,16 @@ export const useWordle = () => {
   };
 
   const loginModalProps = useLoginModal();
+  const [isShowingResetPill, setIsShowingResetPill] = useState(false);
+  const [disablePillTransition, setDisablePillTransition] = useState(false);
+
+  useEffect(() => {
+    if (loginModalProps.isAuthenticated) {
+      setTimeout(() => {
+        loginModalProps.username !== "Mihir" && setIsShowingResetPill(true);
+      }, 1000);
+    }
+  }, []);
 
   return {
     failureMessage,
@@ -69,5 +81,14 @@ export const useWordle = () => {
       open: showFailModal,
       close: hideFailModal,
     },
+    resetModal: {
+      config: resetGameModal,
+      open: showResetGameModal,
+      close: hideResetGameModal,
+    },
+    isShowingResetPill,
+    setIsShowingResetPill,
+    disablePillTransition,
+    setDisablePillTransition,
   };
 };

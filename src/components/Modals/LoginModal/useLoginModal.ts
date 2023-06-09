@@ -6,7 +6,6 @@ import { LoginModalProps } from "./LoginModal";
 
 export const useLoginModal = () => {
   const [{ isVisible }, showModal, hideModal] = useModal();
-
   const options = Object.keys(USER_INFO) as UserName[];
   const [username, setUsername] = useState<UserName | null>(null);
   const [password, setPassword] = useState<string>("");

@@ -1,4 +1,10 @@
-import { BASE_URL, CORRECT_WORD, FAILURE_MESSAGES } from "./constants";
+import {
+  BASE_URL,
+  CORRECT_WORD,
+  FAILURE_MESSAGES,
+  MODAL_MESSAGES_BY_GUESS_INDEX,
+  MODAL_TITLES_BY_GUESS_INDEX,
+} from "./constants";
 import { GameConfig } from "./types";
 
 export const COLOURS = {
@@ -93,14 +99,18 @@ export const convertGameIntoTextToCopy = (gameConfig: GameConfig) => {
     gameConfig.guesses[gameConfig.currentAttemptIndex - 1] === CORRECT_WORD;
   const isGameLost =
     !isGameWon && gameConfig.currentAttemptIndex === gameConfig.guesses.length;
-  const titleText = isGameWon
-    ? `Wordle guessed in`
+  const messageTitle = isGameWon
+    ? MODAL_TITLES_BY_GUESS_INDEX[gameConfig.currentAttemptIndex - 1]
     : isGameLost
-    ? `Missed after`
+    ? FAILURE_MESSAGES[0].title
     : `Job not finished!`;
+  const messageText = isGameWon
+    ? MODAL_MESSAGES_BY_GUESS_INDEX[gameConfig.currentAttemptIndex - 1]
+    : FAILURE_MESSAGES[0].text;
+
   const availableAttempts = gameConfig.guesses.length;
   const gameAttempts = gameConfig.currentAttemptIndex;
-  const fullTtext = `${titleText} ${gameAttempts}/${availableAttempts}!\nCan you do better?\nTry this wordle: ${BASE_URL}\n${gameBoxes}\n#aruba2023`;
+  const fullTtext = `${messageTitle} ${gameAttempts}/${availableAttempts}!\n${messageText}\nTry this wordle: ${BASE_URL}\n${gameBoxes}\n#aruba2023`;
 
   return fullTtext;
 };

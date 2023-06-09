@@ -1,8 +1,8 @@
 import { FailureMessage, GameConfig, ModalConfig } from "./types";
 
 // To change daily
-export const CORRECT_WORD = "TREASURE";
-export const FIRST_WORD_HINT = `Before the mains, you have the _____`;
+export const CORRECT_WORD = "11111";
+export const FIRST_WORD_HINT = `I go gym to get _____`;
 export const SUCCESS_EXPLANATION = ``;
 
 // True Constants
@@ -20,7 +20,7 @@ export const DEFAULT_MODAL_CONFIG: ModalConfig = {
 };
 
 export const MODAL_MESSAGES_BY_GUESS_INDEX: Record<number, string> = {
-  0: "Only 1 guess?!?!? Stop the CAP.",
+  0: "I guess some people just got it 🤷",
   1: "In 2?? Legend.",
   2: "Third time's a charm. A decent effort tbh, I rate.",
   3: "You got it in four. Well done, I guess?",
@@ -28,7 +28,7 @@ export const MODAL_MESSAGES_BY_GUESS_INDEX: Record<number, string> = {
 };
 
 export const MODAL_TITLES_BY_GUESS_INDEX: Record<number, string> = {
-  0: "🧢 The Cap Master 🧢",
+  0: "🧠 The Wordle Genius 🧠",
   1: "👑 King/Queen Moves 👑",
   2: "👍 Not Bad 👍",
   3: "🤡 The Clown 🤡",

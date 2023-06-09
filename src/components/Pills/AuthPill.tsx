@@ -1,5 +1,3 @@
-import { UserConfig } from "@/utils/constants";
-import { getAuthCookie } from "@/utils/cookies";
 import React from "react";
 
 interface AuthPillProps {
@@ -9,7 +7,7 @@ interface AuthPillProps {
 
 export const AuthPill: React.FC<AuthPillProps> = ({ username, onClick }) => {
   return (
-    <div className="fixed top-4 right-4">
+    <div className="fixed top-2 right-2">
       <button
         className="bg-slate-800 px-4 py-2 rounded-lg text-slate-50"
         onClick={onClick}

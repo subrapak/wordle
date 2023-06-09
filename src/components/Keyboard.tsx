@@ -7,17 +7,18 @@ interface KeyboardProps {
   currentAttemptIndex: number;
   isDisabled?: boolean;
 }
+export const keyboardRows = ["qwertyuiop", "asdfghjkl", "zxcvbnm"];
 
+export const allLetters = keyboardRows.join("");
 export const Keyboard: React.FC<KeyboardProps> = ({
   addCharToCurrentGuess,
   guesses,
   currentAttemptIndex,
   isDisabled = false,
 }) => {
-  const rows = ["qwertyuiop", "asdfghjkl", "zxcvbnm"];
   return (
     <div className="flex flex-col justify-evenly items-stretch w-full">
-      {rows.map((row) => (
+      {keyboardRows.map((row) => (
         <KeyboardRow
           key={row}
           characters={row}

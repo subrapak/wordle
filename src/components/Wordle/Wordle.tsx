@@ -6,19 +6,20 @@ import {
   MODAL_TITLES_BY_GUESS_INDEX,
 } from "@/utils/constants";
 import React from "react";
-import { GameFinishModal } from "../Modals/GameFinishModal";
 import { Guesses } from "../Guesses";
-import { useWordle } from "./useWordle";
 import { Heading } from "../Heading";
-import { Share } from "../Share";
+import { GameFinishModal } from "../Modals/GameFinishModal";
 import { LoginModal } from "../Modals/LoginModal/LoginModal";
-import { AuthPill } from "../AuthPill/AuthPill";
+import { ResetGameModal } from "../Modals/ResetGameModal";
+import { AuthPill } from "../Pills/AuthPill";
+import { Share } from "../Share";
+import { SpecialSnackbar } from "../SpecialSnackbar";
+import { useWordle } from "./useWordle";
 
 interface WordleProps extends ReturnType<typeof useWordle> {}
 
 export const Wordle: React.FC<WordleProps> = ({
   gameConfig,
-  resetGame,
   addCharToCurrentGuess,
   deleteLatestChar,
   submitLatestAttempt,
@@ -29,6 +30,12 @@ export const Wordle: React.FC<WordleProps> = ({
   failureMessage,
   onClickShare,
   loginModalProps,
+  resetModal,
+  isShowingResetPill,
+  setIsShowingResetPill,
+  disablePillTransition,
+  setDisablePillTransition,
+  resetGame,
 }) => {
   return (
     <>
@@ -79,7 +86,39 @@ export const Wordle: React.FC<WordleProps> = ({
       >
         <Guesses gameConfig={gameConfig} isDisabled />
       </GameFinishModal>
-      <LoginModal {...loginModalProps} />
+      {!!loginModalProps.isAuthenticated && !!loginModalProps.username && (
+        <ResetGameModal
+          username={loginModalProps.username}
+          isVisible={resetModal.config.isVisible}
+          handleCloseModal={resetModal.close}
+          onClickButton={() => {
+            resetGame();
+            addCharToCurrentGuess("1");
+            addCharToCurrentGuess("1");
+            addCharToCurrentGuess("1");
+            addCharToCurrentGuess("1");
+            addCharToCurrentGuess("1");
+            submitLatestAttempt();
+          }}
+        />
+      )}
+      <LoginModal
+        {...loginModalProps}
+        setIsLoginSuccess={(value) => {
+          loginModalProps.setIsLoginSuccess(value);
+          setIsShowingResetPill(true);
+        }}
+      />
+      {!!loginModalProps.isAuthenticated && (
+        <SpecialSnackbar
+          isVisible={isShowingResetPill}
+          onClickSnackbar={() => {
+            resetModal.open();
+            setDisablePillTransition(true);
+          }}
+          disableTransition={disablePillTransition}
+        />
+      )}
       <AuthPill
         username={loginModalProps.username}
         onClick={loginModalProps.showModal}
