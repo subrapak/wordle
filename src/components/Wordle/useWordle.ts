@@ -49,17 +49,6 @@ export const useWordle = () => {
   };
 
   const loginModalProps = useLoginModal();
-  const [isShowingResetPill, setIsShowingResetPill] = useState(false);
-  const [disablePillTransition, setDisablePillTransition] = useState(false);
-
-  const isNotMihir = loginModalProps.username !== "Mihir";
-  useEffect(() => {
-    if (loginModalProps.isAuthenticated) {
-      setTimeout(() => {
-        isNotMihir && setIsShowingResetPill(true);
-      }, 1000);
-    }
-  }, []);
 
   return {
     failureMessage,
@@ -82,15 +71,5 @@ export const useWordle = () => {
       open: showFailModal,
       close: hideFailModal,
     },
-    resetModal: {
-      config: resetGameModal,
-      open: showResetGameModal,
-      close: hideResetGameModal,
-    },
-    isShowingResetPill,
-    setIsShowingResetPill,
-    disablePillTransition,
-    setDisablePillTransition,
-    isNotMihir,
   };
 };

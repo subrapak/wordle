@@ -30,13 +30,7 @@ export const Wordle: React.FC<WordleProps> = ({
   failureMessage,
   onClickShare,
   loginModalProps,
-  resetModal,
-  isShowingResetPill,
-  setIsShowingResetPill,
-  disablePillTransition,
-  setDisablePillTransition,
   resetGame,
-  isNotMihir,
 }) => {
   return (
     <>
@@ -87,43 +81,13 @@ export const Wordle: React.FC<WordleProps> = ({
       >
         <Guesses gameConfig={gameConfig} isDisabled />
       </GameFinishModal>
-      {!!loginModalProps.isAuthenticated && !!loginModalProps.username && (
-        <ResetGameModal
-          username={loginModalProps.username}
-          isVisible={resetModal.config.isVisible}
-          handleCloseModal={resetModal.close}
-          onClickButton={() => {
-            resetGame();
-            addCharToCurrentGuess("1");
-            addCharToCurrentGuess("1");
-            addCharToCurrentGuess("1");
-            addCharToCurrentGuess("1");
-            addCharToCurrentGuess("1");
-            submitLatestAttempt();
-          }}
-        />
-      )}
       <LoginModal
         {...loginModalProps}
-        setIsLoginSuccess={(value) => {
-          loginModalProps.setIsLoginSuccess(value);
-          setIsShowingResetPill(true);
-        }}
+        setIsLoginSuccess={loginModalProps.setIsLoginSuccess}
       />
-      {!!loginModalProps.isAuthenticated && isNotMihir && (
-        <SpecialSnackbar
-          isVisible={isShowingResetPill}
-          onClickSnackbar={() => {
-            resetModal.open();
-            setDisablePillTransition(true);
-          }}
-          disableTransition={disablePillTransition}
-        />
-      )}
       <AuthPill
         username={loginModalProps.username}
-        // onClick={loginModalProps.showModal}
-        onClick={() => {}}
+        onClick={loginModalProps.showModal}
       />
     </>
   );
