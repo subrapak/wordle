@@ -13,7 +13,7 @@ export const Heading: React.FC<HeadingProps> = ({ onClickHeading }) => {
       </div>
       <CountdownToDate date={ARUBA_FLIGHT_DATE} onClick={onClickHeading} />
       <div className="font-mono text-center text-xs px-10 text-stone-50">
-        {`First word hint (remember: this just gives you a good start, it's not a definition of the final word)`}
+        {`Hint:`}
       </div>
       <div className="font-mono text-center text-xs px-10 text-stone-50">
         {FIRST_WORD_HINT}
