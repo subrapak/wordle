@@ -1,8 +1,8 @@
 import { FailureMessage, GameConfig, ModalConfig } from "./types";
 
 // To change daily
-export const CORRECT_WORD = "FLORIN";
-export const FIRST_WORD_HINT = `Shane McMahon`;
+export const CORRECT_WORD = "GATWICK";
+export const FIRST_WORD_HINT = `First word hint: Keanu when you hurt his dog. (3,4) PS. skip the H`;
 export const SUCCESS_EXPLANATION = ``;
 
 // True Constants
