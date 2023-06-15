@@ -1,8 +1,8 @@
 import { FailureMessage, GameConfig, ModalConfig } from "./types";
 
 // To change daily
-export const CORRECT_WORD = "MOOMBA";
-export const FIRST_WORD_HINT = `First word hint: A robot vacuum`;
+export const CORRECT_WORD = "ARIKOK";
+export const FIRST_WORD_HINT = `First word hint: Yours truly`;
 export const SUCCESS_EXPLANATION = ``;
 
 // True Constants
